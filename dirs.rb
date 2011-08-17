@@ -10,7 +10,7 @@ meta 'dir' do
   end
   
   def default_dir
-    basename.downcase.gsub(/(\s|\_)/, '/')
+    basename.downcase.gsub(/\.dir/, '').gsub(/(\s|\_)/, '/')
   end
   
   template do
