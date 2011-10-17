@@ -2,7 +2,9 @@ dep 'ntp.managed'
 
 dep 'ntp service running' do
   met? {
-    !(grep /ntpd: unrecognized service/, `service --status-all | grep ntpd`)
+    result = sudo "service ntpd status" # !( /ntpd: unrecognized service/ =~ )
+    puts "Result of sudo run: #{result}"
+    false
   }
   
   meet {
