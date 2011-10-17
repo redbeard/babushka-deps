@@ -1,4 +1,6 @@
-dep 'ntp.managed'
+dep 'ntp.managed' do
+  provides 'ntpdate'
+end
 
 dep 'ntp installed' do
   requires_when_unmet 'ntp.managed'
