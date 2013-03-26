@@ -62,7 +62,7 @@ dep("directory-has-correct-ownership", :dir, :username, :group) do
   }
 
   meet {
-    sudo "chown -R #{Process.uid}:#{Process.gid} #{dir}"
+    sudo "chown -R #{username}:#{group} #{dir}"
     unmeetable! "Couldn't change permission for: '#{dir}'" unless is_correct_ownership?
     log_ok "Directory '#{dir}' now owned by #{username}:#{group}."
   }
