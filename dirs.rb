@@ -1,6 +1,6 @@
 require 'fileutils'
 
-dep 'directory', :dir, :as_sudo
+dep ('directory', :dir, :as_sudo) do
   as_sudo.default(false)
 
   def directory
@@ -34,7 +34,8 @@ dep 'directory', :dir, :as_sudo
       unmeetable "Couldn't change permission for: '#{dir}'" unless is_correct_ownership?
       log_ok "Directory '#{dir}' now owned by user."
     end
-  }  
+  }
+
 end
 
 meta 'dir' do
