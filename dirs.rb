@@ -1,7 +1,11 @@
 require 'fileutils'
 
-dep( "directory", :dir, :creation_method ) do
+dep( "directory", :dir, :creation_method, :username, :group ) do
   creation_method.default!(:not_sudo)
+  username.default!(ENV['USER'])
+  group.default!(ENV['USER'])
+
+  requires_when_unment 'politburo:user-exists'.with(username: username, group: group)
 
   def directory
     dir.p
@@ -16,7 +20,7 @@ dep( "directory", :dir, :creation_method ) do
   end
 
   def as_sudo?
-    creation_method == :as_sudo
+    creation_method == :sudo
   end
   
   met? { 
