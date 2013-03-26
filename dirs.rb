@@ -23,6 +23,7 @@ dep( "directory", :dir, :as_sudo ) do
 
   meet { 
     unless does_exist?
+      log_ok "As sudo? #{as_sudo ? 'Yes' : 'No'}"
       directory.mkpath unless as_sudo
       sudo "mkdir -p '#{dir.to_s}'" if as_sudo
       unmeetable! "Couldn't create directory: '#{dir}'" unless does_exist?
