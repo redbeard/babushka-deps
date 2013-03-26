@@ -5,7 +5,7 @@ dep( "directory", :dir, :creation_method, :username, :group ) do
   username.default!(ENV['USER'])
   group.default!(ENV['USER'])
 
-  requires_when_unment 'politburo:user-exists'.with(username: username, group: group)
+  requires_when_unmet 'politburo:user-exists'.with(username: username, group: group)
 
   def directory
     dir.p
