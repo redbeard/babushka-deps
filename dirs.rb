@@ -30,7 +30,7 @@ dep( "directory", :dir, :creation_method ) do
       directory.mkpath unless as_sudo?
       sudo "mkdir -p '#{dir.to_s}'" if as_sudo?
       unmeetable! "Couldn't create directory: '#{dir}'" unless does_exist?
-      log_ok "Directory '#{dir}' created successfully."
+      log_ok "Directory '#{dir}' created successfully#{as_sudo? ? ' using sudo' : ''}."
     end
     
     unless is_correct_ownership? 
