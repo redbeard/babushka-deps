@@ -26,7 +26,7 @@ dep 'ntp service running' do
   requires_when_unmet 'ntp installed', 'system clock synchronised'
   
   met? {
-    sudo "service ntpd status" # !( /ntpd: unrecognized service/ =~ )
+    sudo "service ntpd status"
   }
   
   meet {
