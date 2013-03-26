@@ -1,6 +1,6 @@
 require 'fileutils'
 
-dep ('directory', :dir, :as_sudo) do
+dep( "directory", :dir, :as_sudo ) do
   as_sudo.default(false)
 
   def directory
