@@ -1,7 +1,7 @@
 require 'fileutils'
 
-dep( "directory", :dir, :method ) do
-  method.default!(:not_sudo)
+dep( "directory", :dir, :creation_method ) do
+  creation_method.default!(:not_sudo)
 
   def directory
     dir.p
@@ -16,7 +16,7 @@ dep( "directory", :dir, :method ) do
   end
 
   def as_sudo?
-    method == :as_sudo
+    creation_method == :as_sudo
   end
   
   met? { 
